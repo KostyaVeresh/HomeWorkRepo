@@ -1,0 +1,26 @@
+Number:
+  1 - to add new item;
+  2 - to find phone number by name;
+  3 - to find name by phone number;
+  4 - to save new items in file;
+Enter number:
+1
+Enter new phone and name:
+123 qwe
+Enter number:
+1
+Enter new phone and name:
+456 rty
+Enter number:
+2
+Enter name: ferfe
+phone: 9049
+Enter number:
+3
+Enter phone: 4523
+name: fwews
+Enter number:
+4
+New items were saved in file
+Enter number:
+0
