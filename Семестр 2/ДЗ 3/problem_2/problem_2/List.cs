@@ -4,15 +4,16 @@ namespace problem_2
 {
     class List
     {
-        private class ListElement
+        public class ListElement
         {
             public int value;
             public ListElement next;
         }
-        private ListElement head;
+        public ListElement head;
 
         public List()
         {
+            head = new ListElement();
             head.next = null;
             head.value = 0;
         }
