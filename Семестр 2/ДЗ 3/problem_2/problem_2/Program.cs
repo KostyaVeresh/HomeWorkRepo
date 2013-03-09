@@ -7,11 +7,11 @@ namespace problem_2
         static void Main(string[] args)
         {
             List list = new List();
-            list.addElem(list.head, 4);
-            list.addElem(list.head, 10);
-            list.addElem(list.head.next, 11);
-            list.addElem(list.head.next, 12);
-            list.printList();
+            list.AddElem(list.Head, 4);
+            list.AddElem(list.Head, 10);
+            list.AddElem(list.Head.Next, 11);
+            list.AddElem(list.Head.Next, 12);
+            list.PrintList();
             Console.ReadLine();
         }
     }

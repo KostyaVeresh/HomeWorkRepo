@@ -6,50 +6,83 @@ namespace problem_2
     {
         public class ListElement
         {
-            public int value;
-            public ListElement next;
+            private int number;
+            private ListElement next;
+            public int Number
+            {
+                get 
+                {
+                    return number; 
+                }
+                set
+                {
+                    number = value;
+                }
+            }
+            public ListElement Next
+            {
+                get
+                {
+                    return next;
+                }
+                set
+                {
+                    next = value;
+                }
+            }
         }
-        public ListElement head;
+        private ListElement head;
+        public ListElement Head
+        {
+            get
+            {
+                return head;
+            }
+            private set
+            {
+                head = value;
+            }
+        }
 
         public List()
         {
-            head = new ListElement();
-            head.next = null;
-            head.value = 0;
+            Head = new ListElement();
+            Head.Next = null;
+            Head.Number = 0;
         }
 
-        public ListElement elemPos(int value)
+        public ListElement ElemPos(int value)
         {
             ListElement tmp = head;
-            while (tmp.value != value)
-                tmp = tmp.next;
+            while (tmp.Number != value)
+                tmp = tmp.Next;
             return tmp;
         }
 
-        public void addElem(ListElement pos, int value)
+        public void AddElem(ListElement pos, int value)
         {
 	        ListElement tmp = new ListElement();
-	        tmp.value = value;
-	        tmp.next = pos.next;
-	        pos.next = tmp;
+	        tmp.Number = value;
+	        tmp.Next = pos.Next;
+	        pos.Next = tmp;
         }
 
-        public void deleteElem(int value)
+        public void DeleteElem(int value)
         {
             ListElement tmp = head;
-            while (tmp.next.value != value)
-                tmp = tmp.next;
-            ListElement tmp1 = elemPos(value);
-            tmp.next = tmp1.next;  
+            while (tmp.Next.Number != value)
+                tmp = tmp.Next;
+            ListElement tmp1 = ElemPos(value);
+            tmp.Next = tmp1.Next;  
         }
 
-        public void printList()
+        public void PrintList()
         {
             ListElement tmp = head;
-            while (tmp.next != null)
+            while (tmp.Next != null)
             {
-                Console.Write("{0} ", tmp.next.value);
-                tmp = tmp.next;
+                Console.Write("{0} ", tmp.Next.Number);
+                tmp = tmp.Next;
             }
             Console.WriteLine();
         }
