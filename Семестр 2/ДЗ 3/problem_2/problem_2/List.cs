@@ -2,7 +2,7 @@
 
 namespace problem_2
 {
-    class List
+    public class List
     {
         public class ListElement
         {
@@ -51,6 +51,18 @@ namespace problem_2
             Head.Number = 0;
         }
 
+        public int SizeOfList()
+        {
+            int size = 0;
+            ListElement tmp = head.Next;
+            while (tmp != null)
+            {
+                ++size;
+                tmp = tmp.Next;
+            }
+            return size;
+        }
+
         public ListElement ElemPos(int value)
         {
             ListElement tmp = head;
@@ -71,9 +83,16 @@ namespace problem_2
         {
             ListElement tmp = head;
             while (tmp.Next.Number != value)
+            {
                 tmp = tmp.Next;
-            ListElement tmp1 = ElemPos(value);
-            tmp.Next = tmp1.Next;  
+                if (tmp.Next == null)
+                    break;
+            }
+            if (tmp.Next != null)
+            {
+                ListElement tmp1 = ElemPos(value);
+                tmp.Next = tmp1.Next;  
+            }          
         }
 
         public void PrintList()
