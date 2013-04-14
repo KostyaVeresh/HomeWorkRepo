@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6FF0544-9E3E-4119-82AE-EDCDF33167D9}</ProjectGuid>
+    <ProjectGuid>{94B66C03-602A-46E8-8EE4-4FD39143E6F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>problem_4.Test</RootNamespace>
-    <AssemblyName>pronlem_4.Test</AssemblyName>
+    <AssemblyName>problem_4.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,12 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="StackTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StackMachineTest.cs" />
+    <Compile Include="StackOnArrayTest.cs" />
+    <Compile Include="StackOnListTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\problem_4\problem_4.csproj">
-      <Project>{2d90194a-ec6d-4bbb-bd3b-5a14b73af999}</Project>
+      <Project>{45264aae-1d0b-49b2-b361-e09f250592ba}</Project>
       <Name>problem_4</Name>
     </ProjectReference>
   </ItemGroup>

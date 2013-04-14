@@ -2,9 +2,14 @@
 
 namespace problem_4
 {
-    class Program
+    public class Program
     {
-        static void StackMachine(Stack stack, string str)
+        /// <summary>
+        /// Counts the result of expression in postfix form.
+        /// </summary>
+        /// <param name="stack"></param>
+        /// <param name="str"></param>
+        public static void StackMachine(Stack stack, string str)
         {
             for (int i = 0; i < str.Length; ++i)
             {
@@ -38,6 +43,8 @@ namespace problem_4
                     case '/':
                         {
                             int op1 = stack.Pop();
+                            if (op1 == 0)
+                                throw new Exception("You can't devide by zero.");
                             int op2 = stack.Pop();
                             int result = op2 / op1;
                             stack.Push(result);

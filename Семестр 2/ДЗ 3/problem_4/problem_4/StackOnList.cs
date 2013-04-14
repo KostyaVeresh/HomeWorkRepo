@@ -2,6 +2,9 @@
 
 namespace problem_4
 {
+    /// <summary>
+    /// Stack of int elements based on list.
+    /// </summary>
     public class StackOnList : Stack
     {
         private class StackElement
@@ -17,11 +20,18 @@ namespace problem_4
             head = null;
         }
 
+        /// <summary>
+        /// Returns true if there are no elements in the stack.
+        /// </summary>
         public bool IsEmpty()
         {
             return head == null;
         }
 
+        /// <summary>
+        /// Pushes new element to the stack.
+        /// </summary>
+        /// <param name="num"></param>
         public void Push(int num)
         {
             StackElement temp = new StackElement();
@@ -30,14 +40,20 @@ namespace problem_4
             head = temp;
         }
 
+        /// <summary>
+        /// Returns the top element of stack;
+        /// </summary>
         public int Top()
         {
             if (!IsEmpty())
                 return head.value;
             else
-                return 0;
+                throw new Exception("Stack is empty.");
         }
 
+        /// <summary>
+        /// Pops the element from the top of stack.
+        /// </summary>
         public int Pop()
         {
             int result = Top();
@@ -46,6 +62,9 @@ namespace problem_4
             return result;
         }
 
+        /// <summary>
+        /// Prints elements of the stack in order from top to end. 
+        /// </summary>
         public void PrintStack()
         {
             StackElement tmp = head;
