@@ -6,7 +6,7 @@ namespace problem_3.Test
     [TestClass]
     public class HashTableTest
     {
-        private UserHashTable hashTable;
+        private HashTable hashTable;
         private int hash_1;
         private int hash_2;
         private int hash_3;
@@ -14,10 +14,10 @@ namespace problem_3.Test
         [TestInitialize]
         public void Initialize()
         {
-            hashTable = new UserHashTable(100);
-            hash_1 = hashTable.CalculateHash("abcdef");
-            hash_2 = hashTable.CalculateHash("faebdc");
-            hash_3 = hashTable.CalculateHash("abcdefg");
+            hashTable = new HashTable(100);
+            hash_1 = hashTable.CalculateHash("abcdef", 100);
+            hash_2 = hashTable.CalculateHash("faebdc", 100);
+            hash_3 = hashTable.CalculateHash("abcdefg", 100);
         }
 
         [TestMethod]
@@ -47,6 +47,24 @@ namespace problem_3.Test
             var elem = hashTable.Table[hash_1].Head.Next;
             Assert.AreEqual(3, elem.Count);
             Assert.AreEqual(7, elem.Next.Count);
+        }
+
+        [TestMethod]
+        public void UserHashTableTest()
+        {
+            HashTable userHashTable = new HashTable(100, Program.CalculateHash2);
+            userHashTable.AddValue("abcdef");
+            userHashTable.AddValue("aaebdc");
+            var hash = userHashTable.CountHash("abcdef", 100);
+            var elem = userHashTable.Table[hash].Head.Next;
+            Assert.AreEqual("abcdef", elem.Str);
+            Assert.AreEqual("aaebdc", elem.Next.Str);
+            hash = userHashTable.CountHash("zzzdef", 100);
+            userHashTable.AddValue("zzzdef");
+            userHashTable.AddValue("zzzbdc");
+            elem = userHashTable.Table[hash].Head.Next;
+            Assert.AreEqual("zzzdef", elem.Str);
+            Assert.AreEqual("zzzbdc", elem.Next.Str);
         }
     }
 }

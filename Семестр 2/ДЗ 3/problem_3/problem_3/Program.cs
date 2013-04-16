@@ -3,35 +3,32 @@ using System.IO;
 
 namespace problem_3
 {
-    public class UserHashTable : HashTable
+    
+
+    public class Program
     {
-        public override int CalculateHash(string str) // here can be user's hash function
+        /// <summary>
+        /// User's hash function
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="hashSize"></param>
+        static public int CalculateHash2(string str, int hashSize)
         {
-            int result = 0;
-            for (int i = 0; i < str.Length; ++i)
-            {
-                result += str[i];
-            }
-            return result % hashSize;
+            return str[0] % hashSize;
         }
 
-        public UserHashTable(int hashsize) : base(hashsize)
-        {
-        }
-    }
-
-    class Program
-    {
         static void Main(string[] args)
         {
             const int hashsize = 100;
-            HashTable hashTable = new UserHashTable(hashsize);
+            HashTable hashTable = new HashTable(hashsize);
+
             StreamReader sr = new StreamReader("newfile.txt");
             while (!sr.EndOfStream)
             {
                 string[] temp = sr.ReadLine().Split(' ');
                 for (int i = 0; i < temp.Length; ++i)
-                    hashTable.AddValue(temp[i]);
+                    if (temp[i] != "")
+                        hashTable.AddValue(temp[i]);
             }
             sr.Close();
             hashTable.PrintHashTable();

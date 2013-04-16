@@ -2,8 +2,14 @@
 
 namespace problem_3
 {
+    /// <summary>
+    /// Singly linked list of pairs of values.
+    /// </summary>
     public class List
     {
+        /// <summary>
+        /// Element of list consists of string and number.
+        /// </summary>
         public class ListElement
         {
             public string Str { get; set; }
@@ -23,6 +29,9 @@ namespace problem_3
             }
         }
 
+        /// <summary>
+        /// Creates the head of list.
+        /// </summary>
         public List()
         {
             Head = new ListElement();
@@ -31,6 +40,9 @@ namespace problem_3
             Head.Count = 0;
         }
 
+        /// <summary>
+        /// Returns number of elements of the list.
+        /// </summary>
         public int SizeOfList()
         {
             int size = 0;
@@ -43,11 +55,18 @@ namespace problem_3
             return size;
         }
 
+        /// <summary>
+        /// Returns true if there are no elements in the list.
+        /// </summary>
         public bool IsEmpty()
         {
             return head.Next == null;
         }
 
+        /// <summary>
+        /// Returns the position of the element
+        /// </summary>
+        /// <param name="value"></param>
         public ListElement ElemPos(string value)
         {
             ListElement tmp = head;
@@ -56,6 +75,11 @@ namespace problem_3
             return tmp;
         }
 
+        /// <summary>
+        /// Adds new element to the list
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <param name="value"></param>
         public void AddElem(ListElement pos, string value)
         {
 	        ListElement tmp = new ListElement();
@@ -64,6 +88,10 @@ namespace problem_3
 	        pos.Next = tmp;
         }
 
+        /// <summary>
+        /// Deletes element from the list.
+        /// </summary>
+        /// <param name="value"></param>
         public void DeleteElem(string value)
         {
             ListElement tmp = head;
@@ -76,10 +104,15 @@ namespace problem_3
             if (tmp.Next != null)
             {
                 ListElement tmp1 = ElemPos(value);
-                tmp.Next = tmp1.Next;  
-            }          
+                tmp.Next = tmp1.Next;
+            }
+            else
+                throw new Exception("Can't find the element in the list.");
         }
 
+        /// <summary>
+        /// Prints elements from the first element to the end of list.
+        /// </summary>
         public void PrintList()
         {
             ListElement tmp = head;

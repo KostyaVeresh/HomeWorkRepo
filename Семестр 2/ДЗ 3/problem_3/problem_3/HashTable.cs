@@ -2,19 +2,47 @@
 
 namespace problem_3
 {
+    /// <summary>
+    /// Hash table of strings.
+    /// </summary>
     public class HashTable
     {
         public int hashSize { get; private set; }
         public List[] Table { get; private set; }
 
+        public delegate int HashFunction(string str, int hashSize);
+
+        public HashFunction CountHash;
+
+        /// <summary>
+        /// Creates new hashtable of empty elements, takes a function for the hash table.
+        /// </summary>
+        /// <param name="hashsize"></param>
+        public HashTable(int hashsize, HashFunction CountHash)
+        {
+            Table = new List[hashsize];
+            for (int i = 0; i < hashsize; ++i)
+                Table[i] = new List();
+            hashSize = hashsize;
+            this.CountHash = CountHash;
+        }
+
+        /// <summary>
+        /// Creates hashtable of empty elements.
+        /// </summary>
+        /// <param name="hashsize"></param>
         public HashTable(int hashsize)
         {
             Table = new List[hashsize];
             for (int i = 0; i < hashsize; ++i)
                 Table[i] = new List();
             hashSize = hashsize;
+            this.CountHash = this.CalculateHash;
         }
 
+        /// <summary>
+        /// Prints elements of the hash table in order from 1st to number of hashsize.
+        /// </summary>
         public void PrintHashTable()
         {
             for (int i = 1; i < hashSize; ++i)
@@ -22,7 +50,11 @@ namespace problem_3
                     Table[i].PrintList();
         }
 
-        public virtual int CalculateHash(string str)
+        /// <summary>
+        /// Returns the hash function of string.
+        /// </summary>
+        /// <param name="str"></param>
+        public int CalculateHash(string str, int hashSize)
         {
             int result = 0;
             for (int i = 0; i < str.Length; ++i)
@@ -32,9 +64,13 @@ namespace problem_3
             return result % hashSize;
         }
 
+        /// <summary>
+        /// Adds new element to the hash table.
+        /// </summary>
+        /// <param name="value"></param>
         public void AddValue(string value)
         {
-            int key = CalculateHash(value);
+            int key = CountHash(value, hashSize);
             if (Table[key].Head.Next == null)
             {
                 Table[key].AddElem(Table[key].Head, value);
