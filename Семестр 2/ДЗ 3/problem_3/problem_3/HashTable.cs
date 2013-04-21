@@ -7,12 +7,11 @@ namespace problem_3
     /// </summary>
     public class HashTable
     {
-        public int hashSize { get; private set; }
+        public int HashSize { get; private set; }
         public List[] Table { get; private set; }
-
         public delegate int HashFunction(string str, int hashSize);
 
-        public HashFunction CountHash;
+        public HashFunction CountHash { get; private set; }
 
         /// <summary>
         /// Creates new hashtable of empty elements, takes a function for the hash table.
@@ -23,7 +22,7 @@ namespace problem_3
             Table = new List[hashsize];
             for (int i = 0; i < hashsize; ++i)
                 Table[i] = new List();
-            hashSize = hashsize;
+            HashSize = hashsize;
             this.CountHash = CountHash;
         }
 
@@ -36,7 +35,7 @@ namespace problem_3
             Table = new List[hashsize];
             for (int i = 0; i < hashsize; ++i)
                 Table[i] = new List();
-            hashSize = hashsize;
+            HashSize = hashsize;
             this.CountHash = this.CalculateHash;
         }
 
@@ -45,7 +44,7 @@ namespace problem_3
         /// </summary>
         public void PrintHashTable()
         {
-            for (int i = 1; i < hashSize; ++i)
+            for (int i = 1; i < HashSize; ++i)
                 if (!Table[i].IsEmpty())
                     Table[i].PrintList();
         }
@@ -70,7 +69,7 @@ namespace problem_3
         /// <param name="value"></param>
         public void AddValue(string value)
         {
-            int key = CountHash(value, hashSize);
+            int key = CountHash(value, HashSize);
             if (Table[key].Head.Next == null)
             {
                 Table[key].AddElem(Table[key].Head, value);

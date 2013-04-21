@@ -24,7 +24,7 @@ namespace problem_3.Test
         public void CalculateHashTest()
         {
             Assert.IsTrue(hash_1 == hash_2 && hash_1 != hash_3);
-            Assert.IsTrue(hash_1 < hashTable.hashSize && hash_3 < hashTable.hashSize);
+            Assert.IsTrue(hash_1 < hashTable.HashSize && hash_3 < hashTable.HashSize);
         }
 
         [TestMethod]
