@@ -11,7 +11,8 @@ namespace problem_3
         private List[] table;
         public delegate int HashFunction(string str, int hashSize);
 
-        public HashFunction CountHash { get; private set; }
+        //public HashFunction CountHash { get; private set; }
+        private HashFunction countHash;
 
         /// <summary>
         /// Creates new hashtable of empty elements, takes a function for the hash table.
@@ -23,7 +24,7 @@ namespace problem_3
             for (int i = 0; i < hashsize; ++i)
                 table[i] = new List();
             HashSize = hashsize;
-            this.CountHash = CountHash;
+            this.countHash = CountHash;
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace problem_3
             for (int i = 0; i < hashsize; ++i)
                 table[i] = new List();
             HashSize = hashsize;
-            this.CountHash = this.CalculateHash;
+            this.countHash = this.CalculateHash;
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace problem_3
         /// Returns the hash function of string.
         /// </summary>
         /// <param name="str"></param>
-        public int CalculateHash(string str, int hashSize)
+        private int CalculateHash(string str, int hashSize)
         {
             int result = 0;
             for (int i = 0; i < str.Length; ++i)
@@ -69,7 +70,7 @@ namespace problem_3
         /// <param name="value"></param>
         public void AddValue(string value)
         {
-            int key = CountHash(value, HashSize);
+            int key = countHash(value, HashSize);
             if (table[key].Head.Next == null)
             {
                 table[key].AddElem(table[key].Head, value);

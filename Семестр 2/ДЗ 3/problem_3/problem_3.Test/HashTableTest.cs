@@ -7,46 +7,27 @@ namespace problem_3.Test
     public class HashTableTest
     {
         private HashTable hashTable;
-        private int hash_1;
-        private int hash_2;
-        private int hash_3;
 
         [TestInitialize]
         public void Initialize()
         {
             hashTable = new HashTable(100);
-            hash_1 = hashTable.CalculateHash("abcdef", 100);
-            hash_2 = hashTable.CalculateHash("faebdc", 100);
-            hash_3 = hashTable.CalculateHash("abcdefg", 100);
-        }
-
-        [TestMethod]
-        public void CalculateHashTest()
-        {
-            Assert.IsTrue(hash_1 == hash_2 && hash_1 != hash_3);
-            Assert.IsTrue(hash_1 < hashTable.HashSize && hash_3 < hashTable.HashSize);
         }
 
         [TestMethod]
         public void AddValueTest()
         {
-            hashTable.AddValue("abcdef");
-            hashTable.AddValue("faebdc");
-            var elem = hashTable.HashList(hash_1).Head.Next;
-            Assert.AreEqual("abcdef", elem.Str);
-            Assert.AreEqual("faebdc", elem.Next.Str);
-        }
-
-        [TestMethod]
-        public void AddValueCountTest()
-        {
+            bool fact = false;
             for (int i = 0; i < 3; ++i)
                 hashTable.AddValue("abcdef");
             for (int i = 0; i < 7; ++i)
                 hashTable.AddValue("faebdc");
-            var elem = hashTable.HashList(hash_1).Head.Next;
-            Assert.AreEqual(3, elem.Count);
-            Assert.AreEqual(7, elem.Next.Count);
+            for (int i = 0; i < 100; ++i)
+                if (!hashTable.HashList(i).IsEmpty())
+                    if (hashTable.HashList(i).Head.Next.Str == "abcdef" && hashTable.HashList(i).Head.Next.Count == 3)
+                        if (hashTable.HashList(i).Head.Next.Next.Str == "faebdc" && hashTable.HashList(i).Head.Next.Next.Count == 7)
+                            fact = true;
+            Assert.IsTrue(fact);
         }
 
         [TestMethod]
@@ -55,11 +36,11 @@ namespace problem_3.Test
             HashTable userHashTable = new HashTable(100, Program.CalculateHash2);
             userHashTable.AddValue("abcdef");
             userHashTable.AddValue("aaebdc");
-            var hash = userHashTable.CountHash("abcdef", 100);
+            var hash = Program.CalculateHash2("abcdef", 100);
             var elem = userHashTable.HashList(hash).Head.Next;
             Assert.AreEqual("abcdef", elem.Str);
             Assert.AreEqual("aaebdc", elem.Next.Str);
-            hash = userHashTable.CountHash("zzzdef", 100);
+            hash = Program.CalculateHash2("zzzdef", 100);
             userHashTable.AddValue("zzzdef");
             userHashTable.AddValue("zzzbdc");
             elem = userHashTable.HashList(hash).Head.Next;
