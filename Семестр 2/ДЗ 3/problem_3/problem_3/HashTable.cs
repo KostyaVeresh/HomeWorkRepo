@@ -8,7 +8,7 @@ namespace problem_3
     public class HashTable
     {
         public int HashSize { get; private set; }
-        public List[] Table { get; private set; }
+        private List[] table;
         public delegate int HashFunction(string str, int hashSize);
 
         public HashFunction CountHash { get; private set; }
@@ -19,9 +19,9 @@ namespace problem_3
         /// <param name="hashsize"></param>
         public HashTable(int hashsize, HashFunction CountHash)
         {
-            Table = new List[hashsize];
+            table = new List[hashsize];
             for (int i = 0; i < hashsize; ++i)
-                Table[i] = new List();
+                table[i] = new List();
             HashSize = hashsize;
             this.CountHash = CountHash;
         }
@@ -32,9 +32,9 @@ namespace problem_3
         /// <param name="hashsize"></param>
         public HashTable(int hashsize)
         {
-            Table = new List[hashsize];
+            table = new List[hashsize];
             for (int i = 0; i < hashsize; ++i)
-                Table[i] = new List();
+                table[i] = new List();
             HashSize = hashsize;
             this.CountHash = this.CalculateHash;
         }
@@ -45,8 +45,8 @@ namespace problem_3
         public void PrintHashTable()
         {
             for (int i = 1; i < HashSize; ++i)
-                if (!Table[i].IsEmpty())
-                    Table[i].PrintList();
+                if (!table[i].IsEmpty())
+                    table[i].PrintList();
         }
 
         /// <summary>
@@ -70,14 +70,14 @@ namespace problem_3
         public void AddValue(string value)
         {
             int key = CountHash(value, HashSize);
-            if (Table[key].Head.Next == null)
+            if (table[key].Head.Next == null)
             {
-                Table[key].AddElem(Table[key].Head, value);
-                Table[key].Head.Next.Count = 1;
+                table[key].AddElem(table[key].Head, value);
+                table[key].Head.Next.Count = 1;
             }
             else
             {
-                var tmp = Table[key].Head;
+                var tmp = table[key].Head;
                 while (tmp.Next.Str != value)
                 {
                     tmp = tmp.Next;
@@ -86,12 +86,21 @@ namespace problem_3
                 }
                 if (tmp.Next == null)
                 {
-                    Table[key].AddElem(tmp, value);
+                    table[key].AddElem(tmp, value);
                     tmp.Next.Count = 1;
                 }
                 else
                     tmp.Next.Count += 1;
             }
-        } 
+        }
+
+        /// <summary>
+        /// Returns list of hash table.
+        /// </summary>
+        /// <param name="i"></param>
+        public List HashList(int i)
+        {
+            return table[i];
+        }
     }
 }

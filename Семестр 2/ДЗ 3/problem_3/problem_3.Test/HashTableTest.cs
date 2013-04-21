@@ -32,7 +32,7 @@ namespace problem_3.Test
         {
             hashTable.AddValue("abcdef");
             hashTable.AddValue("faebdc");
-            var elem = hashTable.Table[hash_1].Head.Next;
+            var elem = hashTable.HashList(hash_1).Head.Next;
             Assert.AreEqual("abcdef", elem.Str);
             Assert.AreEqual("faebdc", elem.Next.Str);
         }
@@ -44,7 +44,7 @@ namespace problem_3.Test
                 hashTable.AddValue("abcdef");
             for (int i = 0; i < 7; ++i)
                 hashTable.AddValue("faebdc");
-            var elem = hashTable.Table[hash_1].Head.Next;
+            var elem = hashTable.HashList(hash_1).Head.Next;
             Assert.AreEqual(3, elem.Count);
             Assert.AreEqual(7, elem.Next.Count);
         }
@@ -56,13 +56,13 @@ namespace problem_3.Test
             userHashTable.AddValue("abcdef");
             userHashTable.AddValue("aaebdc");
             var hash = userHashTable.CountHash("abcdef", 100);
-            var elem = userHashTable.Table[hash].Head.Next;
+            var elem = userHashTable.HashList(hash).Head.Next;
             Assert.AreEqual("abcdef", elem.Str);
             Assert.AreEqual("aaebdc", elem.Next.Str);
             hash = userHashTable.CountHash("zzzdef", 100);
             userHashTable.AddValue("zzzdef");
             userHashTable.AddValue("zzzbdc");
-            elem = userHashTable.Table[hash].Head.Next;
+            elem = userHashTable.HashList(hash).Head.Next;
             Assert.AreEqual("zzzdef", elem.Str);
             Assert.AreEqual("zzzbdc", elem.Next.Str);
         }
