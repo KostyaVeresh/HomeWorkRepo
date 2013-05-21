@@ -8,6 +8,7 @@ namespace problem_2
 {
     public class Program
     {
+        // takes list of int elements an bool function for elements, returns new list
         public static List<int> Filter(List<int> list, Func<int, bool> function)
         {
             List<int> newList = new List<int>();
