@@ -59,6 +59,17 @@ namespace problem_1
             }
             labelResult.Text = "";
             labelResult.Text += resValue;
+            numberIsPrinted = true;
+        }
+
+        private void doOperation(char oper)
+        {
+            if (operation != ' ' && double.Parse(labelResult.Text) != resValue)
+                countResult();
+            else
+                SaveValue();
+            labelOper.Text = oper.ToString();
+            operation = oper;
         }
 
         private void button0_Click(object sender, EventArgs e)
@@ -113,39 +124,31 @@ namespace problem_1
 
         private void buttonPlus_Click(object sender, EventArgs e)
         {
-            if (operation != ' ')
-                countResult();
-            else
-                SaveValue();
-            labelOper.Text = "+";
-            operation = '+';
+            doOperation('+');
         }
 
         private void buttonMinus_Click(object sender, EventArgs e)
         {
-            labelOper.Text = "-";
-            operation = '-';
+            doOperation('-');
         }
 
         private void buttonMultiply_Click(object sender, EventArgs e)
         {
-            labelOper.Text = "*";
-            operation = '*';
+            doOperation('*');
         }
 
         private void buttonDivide_Click(object sender, EventArgs e)
         {
-            labelOper.Text = "/";
-            operation = '/';
+            doOperation('/');
         }
 
         private void buttonResult_Click(object sender, EventArgs e)
         {
             countResult();
             labelOper.Text = "";
+            operation = ' ';
+            resValue = 0;
             numberIsPrinted = true;
         }
-
-
     }
 }
