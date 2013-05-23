@@ -20,6 +20,7 @@ namespace problem_1
         private double resValue;
         private char operation = ' ';
         private bool numberIsPrinted = true;
+        private bool point;
 
         private void takeNumber(int num)
         {
@@ -54,7 +55,15 @@ namespace problem_1
                     resValue *= double.Parse(labelResult.Text);
                     break;
                 case '/':
-                    resValue /= double.Parse(labelResult.Text);
+                    if (double.Parse(labelResult.Text) == 0)
+                    {
+                        labelOper.Text = "";
+                        MessageBox.Show("You can't devide by zero.");
+                        resValue = 0;
+                        operation = '0';
+                    }
+                    else
+                        resValue /= double.Parse(labelResult.Text);
                     break;
             }
             labelResult.Text = "";
@@ -62,9 +71,17 @@ namespace problem_1
             numberIsPrinted = true;
         }
 
+        private void deletePoint()
+        {
+            if (labelResult.Text[labelResult.Text.Length - 1] == ',')
+                labelResult.Text = labelResult.Text.Remove(labelResult.Text.Length - 1);
+        }
+
         private void doOperation(char oper)
         {
-            if (operation != ' ' && double.Parse(labelResult.Text) != resValue)
+            deletePoint();
+            point = false;
+            if (operation != ' ' && !numberIsPrinted)
                 countResult();
             else
                 SaveValue();
@@ -144,11 +161,37 @@ namespace problem_1
 
         private void buttonResult_Click(object sender, EventArgs e)
         {
-            countResult();
+            deletePoint();
+            if (!numberIsPrinted)
+                countResult();
             labelOper.Text = "";
             operation = ' ';
             resValue = 0;
             numberIsPrinted = true;
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            resValue = 0;
+            operation = ' ';
+            labelResult.Text = "0";
+            labelOper.Text = "";
+            numberIsPrinted = true;
+            point = false;
+        }
+
+        private void buttonPoint_Click(object sender, EventArgs e)
+        {
+            if (point) 
+                return;
+            if (numberIsPrinted)
+            {
+                labelResult.Text = "0,";
+                numberIsPrinted = false;
+            }
+            else
+                labelResult.Text += ',';
+            point = true;
         }
     }
 }

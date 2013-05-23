@@ -223,6 +223,7 @@
             this.buttonPoint.TabIndex = 10;
             this.buttonPoint.Text = ".";
             this.buttonPoint.UseVisualStyleBackColor = true;
+            this.buttonPoint.Click += new System.EventHandler(this.buttonPoint_Click);
             // 
             // buttonPlus
             // 
@@ -319,6 +320,7 @@
             this.buttonDelete.TabIndex = 19;
             this.buttonDelete.Text = "C";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonMemIn
             // 
