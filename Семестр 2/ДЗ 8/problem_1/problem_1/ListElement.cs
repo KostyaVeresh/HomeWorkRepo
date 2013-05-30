@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace problem_1
 {
-    class Program
+    public class ListElement<T>
     {
-        static void Main(string[] args)
-        {
-    
-        }
+        public T Value { get; set; }
+        public ListElement<T> Next { get; set; }
     }
 }

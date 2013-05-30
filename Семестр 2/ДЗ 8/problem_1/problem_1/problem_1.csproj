@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D51B134E-6761-49DD-8E30-9A5874793ADE}</ProjectGuid>
+    <ProjectGuid>{DC0FBB54-A686-49DC-8D1F-EA284BAEFEB6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>problem_1</RootNamespace>
@@ -41,16 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Add.cs" />
-    <Compile Include="CountTree.cs" />
-    <Compile Include="Divide.cs" />
-    <Compile Include="Multiply.cs" />
-    <Compile Include="Node.cs" />
-    <Compile Include="Number.cs" />
-    <Compile Include="Operation.cs" />
+    <Compile Include="List.cs" />
+    <Compile Include="ListElement.cs" />
+    <Compile Include="ListIterator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Substract.cs" />
+    <Compile Include="Stack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

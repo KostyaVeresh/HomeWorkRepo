@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E861AEF-B100-43CE-B04C-9BAEE2877113}</ProjectGuid>
+    <ProjectGuid>{16AACBA2-1A00-403C-B1AC-39344B63FB30}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>problem_1.Test</RootNamespace>
@@ -50,12 +50,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CountTreeTest.cs" />
+    <Compile Include="ListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StackTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\problem_1\problem_1.csproj">
-      <Project>{d51b134e-6761-49dd-8e30-9a5874793ade}</Project>
+      <Project>{dc0fbb54-a686-49dc-8d1f-ea284baefeb6}</Project>
       <Name>problem_1</Name>
     </ProjectReference>
   </ItemGroup>

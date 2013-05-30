@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E861AEF-B100-43CE-B04C-9BAEE2877113}</ProjectGuid>
+    <ProjectGuid>{40878E89-30E4-49A7-819B-8800E88EBC26}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>problem_1.Test</RootNamespace>
-    <AssemblyName>problem_1.Test</AssemblyName>
+    <RootNamespace>problem_2.Test</RootNamespace>
+    <AssemblyName>problem_2.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,13 +50,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CountTreeTest.cs" />
+    <Compile Include="SetTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\problem_1\problem_1.csproj">
-      <Project>{d51b134e-6761-49dd-8e30-9a5874793ade}</Project>
-      <Name>problem_1</Name>
+    <ProjectReference Include="..\problem_2\problem_2.csproj">
+      <Project>{65cfe5b6-6354-4eee-a23a-83f8730f55c8}</Project>
+      <Name>problem_2</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

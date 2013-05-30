@@ -45,7 +45,7 @@
             this.buttonMultiply = new System.Windows.Forms.Button();
             this.buttonDivide = new System.Windows.Forms.Button();
             this.buttonResult = new System.Windows.Forms.Button();
-            this.buttonPercent = new System.Windows.Forms.Button();
+            this.buttonDelNumber = new System.Windows.Forms.Button();
             this.buttonSqrt = new System.Windows.Forms.Button();
             this.buttonSign = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             this.tableLayoutPanel1.Controls.Add(this.buttonMultiply, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonDivide, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonResult, 4, 4);
-            this.tableLayoutPanel1.Controls.Add(this.buttonPercent, 4, 3);
+            this.tableLayoutPanel1.Controls.Add(this.buttonDelNumber, 4, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonSqrt, 4, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonSign, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.buttonDelete, 3, 1);
@@ -281,15 +281,16 @@
             this.buttonResult.UseVisualStyleBackColor = true;
             this.buttonResult.Click += new System.EventHandler(this.buttonResult_Click);
             // 
-            // buttonPercent
+            // buttonDelNumber
             // 
-            this.buttonPercent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonPercent.Location = new System.Drawing.Point(215, 150);
-            this.buttonPercent.Name = "buttonPercent";
-            this.buttonPercent.Size = new System.Drawing.Size(51, 43);
-            this.buttonPercent.TabIndex = 16;
-            this.buttonPercent.Text = "%";
-            this.buttonPercent.UseVisualStyleBackColor = true;
+            this.buttonDelNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonDelNumber.Location = new System.Drawing.Point(215, 150);
+            this.buttonDelNumber.Name = "buttonDelNumber";
+            this.buttonDelNumber.Size = new System.Drawing.Size(51, 43);
+            this.buttonDelNumber.TabIndex = 16;
+            this.buttonDelNumber.Text = "←";
+            this.buttonDelNumber.UseVisualStyleBackColor = true;
+            this.buttonDelNumber.Click += new System.EventHandler(this.buttonDelNumber_Click);
             // 
             // buttonSqrt
             // 
@@ -300,6 +301,7 @@
             this.buttonSqrt.TabIndex = 17;
             this.buttonSqrt.Text = "√";
             this.buttonSqrt.UseVisualStyleBackColor = true;
+            this.buttonSqrt.Click += new System.EventHandler(this.buttonSqrt_Click);
             // 
             // buttonSign
             // 
@@ -310,6 +312,7 @@
             this.buttonSign.TabIndex = 18;
             this.buttonSign.Text = "+/-";
             this.buttonSign.UseVisualStyleBackColor = true;
+            this.buttonSign.Click += new System.EventHandler(this.buttonSign_Click);
             // 
             // buttonDelete
             // 
@@ -383,7 +386,7 @@
             this.MaximumSize = new System.Drawing.Size(485, 535);
             this.MinimumSize = new System.Drawing.Size(285, 335);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Calculator";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
@@ -409,7 +412,7 @@
         private System.Windows.Forms.Button buttonMultiply;
         private System.Windows.Forms.Button buttonDivide;
         private System.Windows.Forms.Button buttonResult;
-        private System.Windows.Forms.Button buttonPercent;
+        private System.Windows.Forms.Button buttonDelNumber;
         private System.Windows.Forms.Button buttonSqrt;
         private System.Windows.Forms.Button buttonSign;
         private System.Windows.Forms.Button buttonDelete;

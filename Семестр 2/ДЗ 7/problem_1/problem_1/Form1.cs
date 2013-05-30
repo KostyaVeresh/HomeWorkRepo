@@ -193,5 +193,28 @@ namespace problem_1
                 labelResult.Text += ',';
             point = true;
         }
+
+        private void buttonDelNumber_Click(object sender, EventArgs e)
+        {
+            if (numberIsPrinted)
+                return;
+            if (labelResult.Text.Length == 1)
+            {
+                labelResult.Text = "0";
+                numberIsPrinted = true;
+            }
+            else
+                labelResult.Text = labelResult.Text.Remove(labelResult.Text.Length - 1);
+        }
+
+        private void buttonSqrt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSign_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

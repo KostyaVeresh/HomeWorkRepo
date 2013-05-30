@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8E861AEF-B100-43CE-B04C-9BAEE2877113}</ProjectGuid>
+    <ProjectGuid>{463DAD6E-D952-4F61-A2C5-FB6D017977D2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>problem_1.Test</RootNamespace>
+    <RootNamespace>problem_2.Test</RootNamespace>
     <AssemblyName>problem_1.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -50,13 +50,14 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CountTreeTest.cs" />
+    <Compile Include="ListTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UniqueListTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\problem_1\problem_1.csproj">
-      <Project>{d51b134e-6761-49dd-8e30-9a5874793ade}</Project>
-      <Name>problem_1</Name>
+    <ProjectReference Include="..\problem_2\problem_2.csproj">
+      <Project>{e98674a3-719b-4c30-ac6c-5d61584bae61}</Project>
+      <Name>problem_2</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
