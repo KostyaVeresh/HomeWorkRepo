@@ -1,0 +1,5 @@
+1 error MetaEditor MetamodelDiagram Неверное имя 2014.02.16_01.17.40.755
+2 error MetaEditor MetamodelDiagram Неверное имя 2014.02.16_01.17.53.878
+3 error MetaEditor MetamodelDiagram Неверное имя 2014.02.16_01.18.12.092
+4 error MetaEditor MetamodelDiagram Неверное имя 2014.02.16_01.19.00.120
+5 error MetaEditor MetamodelDiagram Неверное имя 2014.02.16_01.19.21.241

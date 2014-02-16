@@ -1,0 +1,17 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+	<file>generated/shapes/CommentClass.sdf</file>
+	<file>generated/shapes/CommentLinkClass.sdf</file>
+	<file>generated/shapes/RequirementsDiagramNodeClass.sdf</file>
+	<file>generated/shapes/ReqeP2NClass.sdf</file>
+	<file>generated/shapes/ReqnConceptAlternativeClass.sdf</file>
+	<file>generated/shapes/ReqnFeaturedClass.sdf</file>
+	<file>generated/shapes/ReqnLeafClass.sdf</file>
+	<file>generated/shapes/ReqnParentClass.sdf</file>
+	<file>generated/shapes/ReqnParentAlternativeClass.sdf</file>
+	<file>generated/shapes/ReqnParentMandatoryClass.sdf</file>
+	<file>generated/shapes/ReqnParentOpAlternativeClass.sdf</file>
+	<file>generated/shapes/ReqnParentOptionalClass.sdf</file>
+	<file>generated/shapes/ReqnParentOrClass.sdf</file>
+</qresource>
+</RCC>

@@ -1,0 +1,7 @@
+1 MetaEditor MetaEntityNode 2014.02.15_20.26.28.510
+2 MetaEditor MetaEntityAssociation 2014.02.15_20.37.02.486
+3 MetaEditor MetaEntityPort 2014.02.15_20.37.05.684
+4 MetaEditor MetaEntityEnum 2014.02.15_20.37.08.242
+5 MetaEditor MetaEntityPossibleEdge 2014.02.15_20.37.15.130
+6 MetaEditor MetaEntityEdge 2014.02.15_20.37.18.288
+7 MetaEditor MetaEditorDiagramNode 2014.02.15_20.37.22.937
