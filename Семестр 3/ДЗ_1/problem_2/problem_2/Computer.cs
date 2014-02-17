@@ -11,6 +11,11 @@ namespace problem_2
         public bool IsVirused { get; private set; }
         private char os;
 
+        /// <summary>
+        /// Creates computer with OS
+        /// </summary>
+        /// <param name="os"></param>
+        /// <param name="virused"></param>
         public Computer(char os, bool virused)
         {
             this.IsVirused = virused;
@@ -23,6 +28,10 @@ namespace problem_2
             Infect(rnd.Next(0,100));
         }
 
+        /// <summary>
+        /// Infects computer
+        /// </summary>
+        /// <param name="value"></param>
         public void Infect(int value)
         {
             switch (this.os)

@@ -10,9 +10,9 @@ namespace problem_2.test
         public void ZeroElementsTest()
         {
             int[] arr = { 2, 0, 5, 3, 2, 0 };
-            Assert.AreEqual(Program.zeroElements(arr), 2);
+            Assert.AreEqual(Program.ZeroElements(arr), 2);
             arr[2] = 0;
-            Assert.AreEqual(Program.zeroElements(arr), 3);
+            Assert.AreEqual(Program.ZeroElements(arr), 3);
         }
     }
 }

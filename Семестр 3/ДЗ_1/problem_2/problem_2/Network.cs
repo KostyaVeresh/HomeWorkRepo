@@ -11,6 +11,12 @@ namespace problem_2
         private int[,] adjacencyMatrix;
         public Computer[] ComputersOfNet { get; private set; }
 
+        /// <summary>
+        /// Creates net of computers and sets OS and viruses
+        /// </summary>
+        /// <param name="adjacencyMatrix"></param>
+        /// <param name="computerOs"></param>
+        /// <param name="virusedComputers"></param>
         public Network(int[,] adjacencyMatrix, char[] computerOs, bool[] virusedComputers)
         {
             this.adjacencyMatrix = adjacencyMatrix;
@@ -19,7 +25,11 @@ namespace problem_2
                 ComputersOfNet[i] = new Computer(computerOs[i], virusedComputers[i]);
         }
 
-        private bool[] tryToInfect()
+        /// <summary>
+        /// Returns if some computers can be virused
+        /// </summary>
+        /// <returns></returns>
+        private bool[] TryToInfect()
         {
             bool[] canBeVirused = new bool[ComputersOfNet.Length];
             for (int i = 0; i < ComputersOfNet.Length; ++i)
@@ -42,17 +52,24 @@ namespace problem_2
             return canBeVirused;
         }
 
+        /// <summary>
+        /// Takes int parameter and sets the system to the next state after infection
+        /// </summary>
+        /// <param name="value"></param>
         public void NextState(int value)
         {
             for (int i = 0; i < ComputersOfNet.Length; ++i)
-                if (tryToInfect()[i])
+                if (TryToInfect()[i])
                     ComputersOfNet[i].Infect(value);
         }
 
+        /// <summary>
+        /// Sets the system to the next state after infection
+        /// </summary>
         public void NextState()
         {
             for (int i = 0; i < ComputersOfNet.Length; ++i)
-                if (tryToInfect()[i])
+                if (TryToInfect()[i])
                     ComputersOfNet[i].Infect();
         }
     }

@@ -8,7 +8,12 @@ namespace problem_2
 {
     public class Program
     {
-        public static int zeroElements(int[] array)
+        /// <summary>
+        /// Counts the number of zero elements in array
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        public static int ZeroElements(int[] array)
         {
             int count = 0;
             for (int i = 0; i < array.Length; ++i)
