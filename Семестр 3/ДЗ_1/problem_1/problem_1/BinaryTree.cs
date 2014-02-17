@@ -10,7 +10,6 @@ namespace problem_1
     public class BinaryTree : IEnumerable
     {
         private Node root;
-        public Node Root { get; set; }
 
         /// <summary>
         /// Creates empty tree
@@ -18,7 +17,6 @@ namespace problem_1
         public BinaryTree()
         {
             this.root = null;
-            this.Root = null;
         }
 
         private void AddElem(ref Node node, int value)
@@ -26,7 +24,6 @@ namespace problem_1
             if (node == null)
             {
                 node = new Node(value);
-                this.Root = root;
                 return;
             }
 	        if (value < node.value)
@@ -42,7 +39,6 @@ namespace problem_1
         public void AddElem(int value)
         {
             AddElem(ref root, value);
-            Root = root;
         }
 
         /// <summary>
@@ -50,17 +46,17 @@ namespace problem_1
         /// </summary>
         /// <param name="node"></param>
         /// <returns></returns>
-        public bool IsLeaf(Node node)
+        private bool IsLeaf(Node node)
         {
 	        return node.right == null && node.left == null;
         }
 
-        public bool HasOneChild(Node node)
+        private bool HasOneChild(Node node)
         {
 	        return node.right == null && node.left != null || node.right != null && node.left == null;
         }
 
-        public Node MostLeftChild(Node node)
+        private Node MostLeftChild(Node node)
         {
 	        if (node.left != null)
 		        return MostLeftChild(node.left);
@@ -104,7 +100,6 @@ namespace problem_1
         public void DeleteElem(int value)
         {
             DeleteElem(ref root, value);
-            Root = root;
         }
 
         private void PrintTree(ref Node node)
@@ -136,19 +131,65 @@ namespace problem_1
         {
             return GetEnumerator();
         }
-    }
 
-    public class Node
-    {
-        public int value;
-        public Node left;
-        public Node right;
-
-        public Node(int value)
+        class TreeIterator : IEnumerator
         {
-            this.value = value;
-            this.right = null;
-            this.left = null;
+            private List<int> listOfElements = new List<int>();
+            private int passed = -1;
+
+            private void CreateListOfElements(Node node)
+            {
+                if (node == null)
+                    return;
+                CreateListOfElements(node.left);
+                listOfElements.Add(node.value);
+                CreateListOfElements(node.right);
+            }
+
+            public TreeIterator(BinaryTree tree)
+            {
+                CreateListOfElements(tree.root);
+            }
+
+            public bool MoveNext()
+            {
+                this.passed++;
+                return passed < this.listOfElements.Count;
+            }
+
+            public int Current
+            {
+                get
+                {
+                    return this.listOfElements[passed];
+                }
+            }
+
+            object IEnumerator.Current
+            {
+                get
+                {
+                    return Current;
+                }
+            }
+
+            public void Reset() { }
+
+            public void Dispose() { }
+        }
+
+        class Node
+        {
+            public int value;
+            public Node left;
+            public Node right;
+
+            public Node(int value)
+            {
+                this.value = value;
+                this.right = null;
+                this.left = null;
+            }
         }
     }
 }
