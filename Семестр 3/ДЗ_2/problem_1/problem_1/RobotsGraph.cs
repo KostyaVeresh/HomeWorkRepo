@@ -26,7 +26,7 @@ namespace problem_1
             for (int i = 0; i < adjacencyMatrix.GetLength(0); ++i)
                 visitedVertices[i] = false;
             CreateNewMatrix(0);
-            int count = 0;
+            int count1 = 0;
 
             for (int i = 0; i < adjacencyMatrix.GetLength(0); ++i)
             {
@@ -39,12 +39,13 @@ namespace problem_1
                             if (robotCoordinates[k] == i || robotCoordinates[k] == j)
                                 tmp = true;
                         if (tmp)
-                            ++count;
+                            ++count1;
                     }
                 }
             }
-            count = count / 2;
-            Result = count > 1;
+            count1 = count1 / 2;
+            int count2 = robotCoordinates.Length - count1;
+            Result = (count1 != 1) && (count2 != 1);
         }
 
         /// <summary>
