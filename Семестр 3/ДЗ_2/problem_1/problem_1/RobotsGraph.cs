@@ -26,22 +26,25 @@ namespace problem_1
             for (int i = 0; i < adjacencyMatrix.GetLength(0); ++i)
                 visitedVertices[i] = false;
             CreateNewMatrix(0);
-            bool tmp = false;
+            int count = 0;
 
-            for (int i = 0; i < robotCoordinates.Length; ++i)
+            for (int i = 0; i < adjacencyMatrix.GetLength(0); ++i)
             {
-                for (int j = 0; j < robotCoordinates.Length; ++j)
+                for (int j = 0; j < adjacencyMatrix.GetLength(0); ++j)
                 {
-                    if (WayExists(robotCoordinates[i], robotCoordinates[j]))
-                        tmp = true;
+                    if (newMatrix[i, j] == 1)
+                    {
+                        bool tmp = false;
+                        for (int k = 0; k < robotCoordinates.Length; ++k)
+                            if (robotCoordinates[k] == i || robotCoordinates[k] == j)
+                                tmp = true;
+                        if (tmp)
+                            ++count;
+                    }
                 }
-                if (!tmp)
-                {
-                    Result = false;
-                    return;
-                }
-                tmp = false;
             }
+            count = count / 2;
+            Result = count > 1;
         }
 
         /// <summary>
@@ -67,20 +70,6 @@ namespace problem_1
                 }
             for (int i = 0; i < adjacencyMatrix.GetLength(0); ++i)
                 visitedVertices[i] = false;
-        }
-
-        private bool WayExists(int first, int second)
-        {
-            if (newMatrix[first, second] == 1)
-                return true;
-            visitedVertices[first] = true;
-            for (int i = 0; i < adjacencyMatrix.GetLength(0); ++i)
-                if ((newMatrix[first, i] != 0) && (!visitedVertices[i]))
-                {
-                    if (WayExists(i, second))
-                        return true;
-                }
-            return false;
         }
     }
 }
