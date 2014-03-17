@@ -2,10 +2,10 @@
 
 let firstPos num (list: int list) =
     let rec findPos acc (list: int list) =
-        if list.Head = num then 
-          acc
-        else
-          findPos (acc + 1) list.Tail
+        match list with
+        | [] -> 0
+        | h::t when h = num -> acc
+        | _ -> findPos (acc + 1) list.Tail
     findPos 1 list   
     
 [<EntryPoint>]
