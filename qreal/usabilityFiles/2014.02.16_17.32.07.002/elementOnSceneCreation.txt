@@ -1,2 +1,0 @@
-1 MetaEditor MetaEditorDiagramNode 2014.02.16_17.25.57.466
-2 MetaEditor MetaEntityNode 2014.02.16_17.26.02.051
