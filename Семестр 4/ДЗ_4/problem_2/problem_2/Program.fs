@@ -1,5 +1,11 @@
 ﻿open System
 
+let listMap1 x l =
+    List.map (fun y -> y * x) l
+
+let listMap2 x =
+    List.map ((*) <| x)
+
 let listMap: int -> int list -> int list =
     List.map << (*)
 
