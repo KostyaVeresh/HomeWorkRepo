@@ -1,15 +1,17 @@
 ﻿open System
 
 let maxPair (list: int list) =
-    let rec checkPairs pos acc =
-        if pos + 1 = list.Length then acc
-        else
-           if list.[pos]+list.[pos+1] > list.[acc]+list.[acc+1] then
-              checkPairs (pos+1) pos
-           else
-              checkPairs (pos+1) acc
-    checkPairs 0 0 + 1
-            
+    let rec checkPairs list acc max maxPos =
+        match list with
+        | [] -> failwith "Empty array"
+        | [h] -> acc
+        | h :: t ->
+            let pair = h + t.Head
+            if pair > max then
+                checkPairs list.Tail (acc + 1) pair acc
+            else
+                checkPairs list.Tail (acc + 1) max maxPos
+    checkPairs list 0 0 0
               
                               
 

@@ -1,15 +1,15 @@
 ﻿open System
 
 let rec differElems (list : int list) =
-    let rec compare num =
-        match num with
-        | x when x = list.Length -> true
-        | _ when list.Head = list.[num] -> false
-        | _ -> compare (num + 1)
+    let rec compare list elem =
+        match list with
+        | [] -> true
+        | h::t when h = elem -> false
+        | _ -> compare list.Tail elem
 
     match list with
     | [] -> true
-    | _ when compare 1 -> differElems list.Tail
+    | h::t when compare t h -> differElems list.Tail
     | _ -> false
 
 [<EntryPoint>]
