@@ -18,7 +18,8 @@ SOURCES += main.cpp \
 	multistrokeRecognizers/nearestposgridgesturesmanager.cpp \
 	multistrokeRecognizers/mixedgesturesmanager.cpp \
 	multistrokeRecognizers/adaBoostManager.cpp \
-    multistrokeRecognizers/gridStarManager.cpp
+    multistrokeRecognizers/gridStarManager.cpp \
+    multistrokeRecognizers/gridStarClassifier.cpp
 	#integralrecognizer.cpp
 HEADERS += mousegestures.h \
 	pathcorrector.h \
@@ -46,7 +47,8 @@ HEADERS += mousegestures.h \
 	multistrokeRecognizers/mixedgesturesmanager.h \
 	multistrokeRecognizers/adaBoostManager.h \
 	recognizerInterface.h \
-    multistrokeRecognizers/gridStarManager.h
+    multistrokeRecognizers/gridStarManager.h \
+    multistrokeRecognizers/gridStarClassifier.h
 	#integralrecognizer.h
 FORMS += mousegestures.ui \
 	test/testwindow.ui

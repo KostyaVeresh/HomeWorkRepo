@@ -10,7 +10,7 @@ GridStarManager::GridStarManager()
 
 double GridStarManager::getMaxDistance(QString const &)
 {
-	return 1000;
+	return 10000;
 }
 
 bool GridStarManager::isMultistroke()
@@ -39,11 +39,11 @@ double GridStarManager::getDistance(QList<int> const & key1, QList<int> const & 
 	{
 		for(int j = 1; j <= n; ++j)
 		{
-			double dist = qAbs(key1[i - 1] - key2[j - 1]);
+			double dist = qAbs(key1[i - 1] - key2[j - 1]) / 1.5;
 			int aboveCell = matrix[i - 1][j];
 			int leftCell = matrix[i][j - 1];
 			int diagonalCell = matrix[i - 1][j - 1];
-			matrix[i][j] = std::min((double) std::min(aboveCell + 3, leftCell + 3),
+			matrix[i][j] = std::min((double) std::min(aboveCell + 1 , leftCell + 1),
 									diagonalCell + dist);
 		}
 	}
@@ -53,7 +53,7 @@ double GridStarManager::getDistance(QList<int> const & key1, QList<int> const & 
 QList<int> GridStarManager::getKey(PathVector const & path)
 {
 	QList<int> list;
-	PathVector newPath = pointToGrid(addPointsVector(KeyBuilder::scaleGesture(path, scaleGestSize)));
+	PathVector newPath = pointToGrid(deleteClosePoints(addPointsVector(KeyBuilder::scaleGesture(path, scaleGestSize))));
 	foreach (PointVector vect, newPath)
 	{
 		int num = 0;
@@ -97,6 +97,12 @@ QList<int> GridStarManager::getKey(PathVector const & path)
 	return list;
 }
 
+double GridStarManager::dist(QPoint first, QPoint second)
+{
+	return sqrt((first.x() - second.x()) * (first.x() - second.x())
+		+ (first.y() - second.y()) * (first.y() - second.y()));
+}
+
 PathVector GridStarManager::addPointsVector(PathVector path)
 {
 	PathVector newPath;
@@ -111,8 +117,7 @@ PathVector GridStarManager::addPointsVector(PathVector path)
 			first = vect[num];
 			second = vect[num + 1];
 			newVect.append(first);
-			int countNewPoints = qRound(sqrt((first.x() - second.x()) * (first.x() - second.x())
-				+ (first.y() - second.y()) * (first.y() - second.y()))
+			int countNewPoints = qRound(dist(first, second)
 				/ sqrt(gridStarSize * gridStarSize + gridStarSize * gridStarSize));
 			for (int i = 1; i < countNewPoints + 1; ++i)
 			{
@@ -123,6 +128,35 @@ PathVector GridStarManager::addPointsVector(PathVector path)
 			++num;
 		}
 		newVect.append(vect.last());
+		newPath.append(newVect);
+	}
+	return newPath;
+}
+
+PathVector GridStarManager::deleteClosePoints(PathVector path)
+{
+	PathVector newPath;
+	foreach (PointVector vect, path)
+	{
+		PointVector newVect;
+		int num1 = 0;
+		int num2 = 1;
+		QPoint first;
+		QPoint second;
+		newVect.append(vect[num1]);
+		while (num2 < vect.size())
+		{
+			first = vect[num1];
+			second = vect[num2];
+			if (dist(first, second) < sqrt(gridStarSize * gridStarSize + gridStarSize * gridStarSize) / 2)
+				++num2;
+			else
+			{
+				newVect.append(second);
+				num1 = num2;
+				++num2;
+			}
+		}
 		newPath.append(newVect);
 	}
 	return newPath;

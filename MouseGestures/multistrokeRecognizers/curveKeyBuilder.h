@@ -61,6 +61,8 @@ public:
 	static PathVector scaleGesture(const PathVector &mousePath, int scaleSize)
 	{
 		PathVector newGesture;
+		int bound1 = upperBound(mousePath);
+		int bound2 = leftBound(mousePath);
 		int height = lowerBound(mousePath) - upperBound(mousePath);
 		int width = rightBound(mousePath) - leftBound(mousePath);
 		int minGestSize = qMin(height, width);
@@ -69,7 +71,7 @@ public:
 		{
 			PointVector newPath;
 			foreach(QPoint point, path)
-				newPath.append(QPoint(qRound(point.x() * scale), qRound(point.y()* scale)));
+				newPath.append(QPoint(qRound(point.x() * scale - bound2 * scale), qRound(point.y()* scale - bound1 * scale)));
 			newGesture.append(newPath);
 		}
 		return newGesture;
