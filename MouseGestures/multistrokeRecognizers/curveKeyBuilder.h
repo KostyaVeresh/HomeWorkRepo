@@ -66,18 +66,37 @@ public:
 		int height = lowerBound(mousePath) - upperBound(mousePath);
 		int width = rightBound(mousePath) - leftBound(mousePath);
 		int minGestSize = qMin(height, width);
-		double scale = scaleSize / minGestSize;
+		int maxGestSize = qMax(height, width);
+		double scale;
+		if (minGestSize == 0 && maxGestSize == 0)
+			return newGesture;
+		else {
+			if (minGestSize == 0)
+				scale = scaleSize / maxGestSize;
+			else {
+				if (maxGestSize == 0)
+					scale = scaleSize / minGestSize;
+				else {
+					if ((double)minGestSize / (double)maxGestSize < 0.2)
+						scale = scaleSize / maxGestSize;
+					else
+						scale = scaleSize / minGestSize;
+				}
+			}
+		}
 		foreach (PointVector path, mousePath)
 		{
-			PointVector newPath;
-			foreach(QPoint point, path)
-				newPath.append(QPoint(qRound(point.x() * scale - bound2 * scale), qRound(point.y()* scale - bound1 * scale)));
-			newGesture.append(newPath);
+			if (path.size() > 1)
+			{
+				PointVector newPath;
+				foreach(QPoint point, path)
+					newPath.append(QPoint(qRound(point.x() * scale - bound2 * scale), qRound(point.y()* scale - bound1 * scale)));
+				newGesture.append(newPath);
+			}
 		}
 		return newGesture;
 	}
 
-private:
     static int upperBound(const PathVector & mousePath)
     {
         if (mousePath.isEmpty())
@@ -130,6 +149,7 @@ private:
         }
         return rightBound;
     }
+private:
     static void rasterizeSegment(SquarePos const & pos1, SquarePos const & pos2, Key * segment)
     {
         if (!segment->isEmpty() && pos1 == segment->at(0))

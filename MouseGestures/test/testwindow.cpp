@@ -30,6 +30,7 @@ const QString sumGesturesTrainingAlgorithm = "sum positions training algorithm";
 const QString rectangleGesturesTrainingAlgorithm = "rectangle gestures training algorithm";
 const QString nearestPosGridTrainingAlgorithm = "distance grid training algorithm";
 const QString mixedGridAlgorithm = "combination of rectangle and nesrest squares algorithm";
+const QString mixedStarAlgorithm = "combination of grid star and nearest squares algorithm";
 const QString mixedTrainingAlgorithm = "mixed training algorithm";
 const QString adaBoostAlgorithm = "adaboost";
 const QString gridStarAlgorithm = "grid star algorithm";
@@ -52,6 +53,7 @@ TestWindow::TestWindow(QWidget *parent) :
 	ui->cbAlgorithm->addItem(rectangleGesturesTrainingAlgorithm, QVariant());
 	ui->cbAlgorithm->addItem(nearestPosGridTrainingAlgorithm, QVariant());
 	ui->cbAlgorithm->addItem(mixedGridAlgorithm, QVariant());
+	ui->cbAlgorithm->addItem(mixedStarAlgorithm, QVariant());
 	ui->cbAlgorithm->addItem(mixedTrainingAlgorithm,  QVariant());
 	ui->cbAlgorithm->addItem(gridStarAlgorithm,  QVariant());
 	ui->cbAlgorithm->addItem("adaboost", QVariant()); //TODO: add constant
@@ -116,6 +118,9 @@ RecognizerInterface * TestWindow::getGesturesManager()
 	}
 	else if (name == mixedGridAlgorithm) {
 		return new AbstractRecognizer(new MixedGesturesManager());
+	}
+	else if (name == mixedStarAlgorithm) {
+		return new AbstractRecognizer(new MixedStarGesturesManager());
 	}
 	else if (name == gridStarAlgorithm) {
 		return new AbstractRecognizer(new GridStarManager());
