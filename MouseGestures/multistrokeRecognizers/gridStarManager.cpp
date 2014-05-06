@@ -18,10 +18,10 @@ bool GridStarManager::isMultistroke()
 	return true;
 }
 
-double GridStarManager::getDistance(QList<int> const & key1, QList<int> const & key2)
+double GridStarManager::getDistance(double * const &key1, double * const &key2)
 {
-	int m = key1.size();
-	int n = key2.size();
+	int m = keySize;
+	int n = keySize;
 	if (m == 0)
 		return n;
 	if (n == 0)
@@ -50,7 +50,7 @@ double GridStarManager::getDistance(QList<int> const & key1, QList<int> const & 
 	return (double) (matrix[m][n] * (abs(m - n) + 1)) / std::min(n, m);
 }
 
-QList<int> GridStarManager::getKey(PathVector const & path)
+double *GridStarManager::getKey(PathVector const & path)
 {
 	QList<int> list;
 	PathVector newPath = pointToGrid(deleteClosePoints(addPointsVector(KeyBuilder::scaleGesture(path, scaleGestSize))));
@@ -94,7 +94,14 @@ QList<int> GridStarManager::getKey(PathVector const & path)
 			++num;
 		}
 	}
-	return list;
+	double *array = new double[keySize * keySize];
+	int num = 0;
+	foreach (int elem, list)
+	{
+		array[num] = elem;
+		++num;
+	}
+	return array;
 }
 
 double GridStarManager::dist(QPoint first, QPoint second)

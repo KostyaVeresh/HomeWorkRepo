@@ -7,17 +7,18 @@
 
 static const int gridStarSize = 150;
 static const int scaleGestSize = 1000;
+static const int keySize = 81;
 const double weightMix1 = 0.8;
 const double weightMix2 = 1 - weightMix1;
 
-class GridStarManager : public GesturesRecognizer<QList<int> >
+class GridStarManager : public GesturesRecognizer<double*>
 {
 public:
 	GridStarManager();
 	double getMaxDistance(QString const &);
 	bool isMultistroke();
-	double getDistance(QList<int> const & key1, QList<int> const & key2);
-	QList<int> getKey(PathVector const & path);
+	double getDistance(double * const & key1, double * const & key2);
+	double *getKey(PathVector const & path);
 
 private:
 	PathVector addPointsVector(PathVector path);
@@ -27,7 +28,7 @@ private:
 };
 
 
-class MixedStarGesturesManager : public GesturesRecognizer<QPair<QList<int>, double *> >
+class MixedStarGesturesManager : public GesturesRecognizer<QPair<double *, double *> >
 {
 public:
 	MixedStarGesturesManager() {}
@@ -42,7 +43,7 @@ public:
 		return true;
 	}
 
-	double getDistance(QPair<QList<int>, double *> const & key1, QPair<QList<int>, double *> const & key2)
+	double getDistance(QPair<double*, double *> const & key1, QPair<double*, double *> const & key2)
 	{
 		double dist1 = (new GridStarManager())->getDistance(key1.first, key2.first);
 		double dist2 = (new NearestPosGridGesturesManager())->getDistance(key1.second, key2.second);
@@ -50,11 +51,11 @@ public:
 
 	}
 
-	QPair<QList<int>, double *> getKey(PathVector const & path)
+	QPair<double*, double *> getKey(PathVector const & path)
 	{
-		QList<int> key1 = (new GridStarManager())->getKey(path);
+		double* key1 = (new GridStarManager())->getKey(path);
 		double * key2 = (new NearestPosGridGesturesManager())->getKey(path);
-		return QPair<QList<int>, double *>(key1, key2);
+		return QPair<double*, double *>(key1, key2);
 
 	}
 };
