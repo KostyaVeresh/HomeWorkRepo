@@ -5,10 +5,10 @@
 #include "nearestposgridgesturesmanager.h"
 #include "rectanglegesturesmanager.h"
 
-static const int gridStarSize = 150;
+static const int gridStarSize = 100;
 static const int scaleGestSize = 1000;
 static const int keySize = 81;
-const double weightMix1 = 0.8;
+const double weightMix1 = 0.1;
 const double weightMix2 = 1 - weightMix1;
 
 class GridStarManager : public GesturesRecognizer<double*>

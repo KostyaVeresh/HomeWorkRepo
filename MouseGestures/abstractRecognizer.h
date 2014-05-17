@@ -49,11 +49,16 @@ public:
 	}
 
 	virtual double getMaxDistance(QString const & object) = 0;
+	virtual double getDistance(TKey const & key1, TKey const & key2)
+	{
+		return 0;
+	}
+
+	virtual TKey getKey(PathVector const & path) = 0;
 
 protected:
 	TKey mKey;
-	virtual double getDistance(TKey const & key1, TKey const & key2) = 0;
-	virtual TKey getKey(PathVector const & path) = 0;
+
 	QMap<QString, TKey> mGestures;
 	//maybe to do several lists for multistroke gestures
 };

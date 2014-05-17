@@ -50,11 +50,11 @@ HEADERS += mousegestures.h \
 	recognizerInterface.h \
     multistrokeRecognizers/gridStarManager.h \
     multistrokeRecognizers/gridStarClassifier.h \
-    multistrokeRecognizers/matrixDistManager.h
+    multistrokeRecognizers/matrixDistManager.h \
+    closerNeighboursRecognizer.h
 	#integralrecognizer.h
 FORMS += mousegestures.ui \
 	test/testwindow.ui
-
 
 
 

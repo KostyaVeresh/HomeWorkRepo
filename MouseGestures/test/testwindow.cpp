@@ -14,6 +14,8 @@
 #include "testThread.h"
 #include <QFileDialog>
 #include <QApplication>
+#include "abstractRecognizer.h"
+#include "closerNeighboursRecognizer.h"
 
 //const QString pathToTestFile = "usersGestures.xml";
 const QString pathToTrainingFile = "NeuralNetwork/learnGestures/learn_gestures1.xml";
@@ -34,6 +36,7 @@ const QString mixedStarAlgorithm = "combination of grid star and nearest squares
 const QString mixedTrainingAlgorithm = "mixed training algorithm";
 const QString adaBoostAlgorithm = "adaboost";
 const QString gridStarAlgorithm = "grid star algorithm";
+const QString closerNeighboursGridStar = "closer neighbours grid star algorithm";
 
 TestWindow::TestWindow(QWidget *parent) :
 		QMainWindow(parent),
@@ -56,6 +59,7 @@ TestWindow::TestWindow(QWidget *parent) :
 	ui->cbAlgorithm->addItem(mixedStarAlgorithm, QVariant());
 	ui->cbAlgorithm->addItem(mixedTrainingAlgorithm,  QVariant());
 	ui->cbAlgorithm->addItem(gridStarAlgorithm,  QVariant());
+	ui->cbAlgorithm->addItem(closerNeighboursGridStar, QVariant());
 	ui->cbAlgorithm->addItem("adaboost", QVariant()); //TODO: add constant
 	connect(ui->bTest, SIGNAL(clicked()), this, SLOT(test()));
 	ui->pbTested->setValue(0);
@@ -124,6 +128,10 @@ RecognizerInterface * TestWindow::getGesturesManager()
 	}
 	else if (name == gridStarAlgorithm) {
 		return new AbstractRecognizer(new GridStarManager());
+	}
+	else if (name == closerNeighboursGridStar) {
+		GesturesRecognizer<double * > * recogn = new GridStarManager();
+		return new CloserNeighboursRecognizer<double * > (recogn);
 	}
 	else if (name == sumGesturesTrainingAlgorithm)
 	{

@@ -22,10 +22,6 @@ double GridStarManager::getDistance(double * const &key1, double * const &key2)
 {
 	int m = keySize;
 	int n = keySize;
-	if (m == 0)
-		return n;
-	if (n == 0)
-		return m;
 	double matrix[m + 1][n + 1];
 	for (int i = 0; i <= m; i++)
 	{
@@ -39,7 +35,7 @@ double GridStarManager::getDistance(double * const &key1, double * const &key2)
 	{
 		for(int j = 1; j <= n; ++j)
 		{
-			double dist = qAbs(key1[i - 1] - key2[j - 1]) / 1.5;
+			double dist = qAbs(key1[i - 1] - key2[j - 1]);
 			int aboveCell = matrix[i - 1][j];
 			int leftCell = matrix[i][j - 1];
 			int diagonalCell = matrix[i - 1][j - 1];
@@ -47,6 +43,8 @@ double GridStarManager::getDistance(double * const &key1, double * const &key2)
 									diagonalCell + dist);
 		}
 	}
+	//delete [] key1;
+	//delete [] key2;
 	return (double) (matrix[m][n] * (abs(m - n) + 1)) / std::min(n, m);
 }
 
