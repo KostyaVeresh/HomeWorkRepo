@@ -71,10 +71,8 @@ public:
 				PathVector path = Parser::stringToPath(pathStr);
 				TKey key = mGesturesManager->getKey(path);
 				countDists[object].append(mGesturesManager->getDistance(gestKey, key));
-				delete key;
 			}
 		}
-		delete gestKey;
 
 		for (int i = 0; i < numberOfNeighbours; ++i)
 		{

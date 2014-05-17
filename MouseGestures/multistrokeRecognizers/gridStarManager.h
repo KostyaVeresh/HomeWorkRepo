@@ -7,7 +7,7 @@
 
 static const int gridStarSize = 100;
 static const int scaleGestSize = 1000;
-static const int keySize = 81;
+static const int keySize = 120;
 const double weightMix1 = 0.1;
 const double weightMix2 = 1 - weightMix1;
 

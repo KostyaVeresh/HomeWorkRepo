@@ -43,8 +43,6 @@ double GridStarManager::getDistance(double * const &key1, double * const &key2)
 									diagonalCell + dist);
 		}
 	}
-	//delete [] key1;
-	//delete [] key2;
 	return (double) (matrix[m][n] * (abs(m - n) + 1)) / std::min(n, m);
 }
 
@@ -92,7 +90,7 @@ double *GridStarManager::getKey(PathVector const & path)
 			++num;
 		}
 	}
-	double *array = new double[keySize * keySize];
+	double *array = new double[keySize];
 	int num = 0;
 	foreach (int elem, list)
 	{
