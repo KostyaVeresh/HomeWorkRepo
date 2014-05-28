@@ -12,8 +12,9 @@ let sum =
         threads.[i].RunWorkerCompleted.Add(fun args ->
             result := !result  + unbox args.Result)) [0 .. 99]
     let mutable isThreadWorks = [|for i in 0 .. 99 -> threads.[i].IsBusy|]
-    let start = List.map (fun i -> threads.[i].RunWorkerAsync()) [0 .. 99]
-    isThreadWorks <- [| for i in 0 .. 99 -> threads.[i].IsBusy |]
+    for i in 0..99 do
+            threads.[i].RunWorkerAsync()
+            isThreadWorks <- [| for i in 0 .. 99 -> threads.[i].IsBusy |] 
     while ((Array.tryFind (fun x -> x = true) isThreadWorks) <> None) do
         isThreadWorks <- [| for i in 0 .. 99 -> threads.[i].IsBusy |]
     result.Value

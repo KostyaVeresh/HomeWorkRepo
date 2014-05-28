@@ -36,6 +36,36 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FSharp.Compiler.CodeDom">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\FSharp.Compiler.CodeDom.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.PowerPack">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\FSharp.PowerPack.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.PowerPack.Build.Tasks">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\FSharp.PowerPack.Build.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.PowerPack.Compatibility">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\FSharp.PowerPack.Compatibility.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.PowerPack.Linq">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\FSharp.PowerPack.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.PowerPack.Metadata">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\FSharp.PowerPack.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.PowerPack.Parallel.Seq">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\FSharp.PowerPack.Parallel.Seq.dll</HintPath>
+    </Reference>
+    <Reference Include="fshtmldoc">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\fshtmldoc.exe</HintPath>
+    </Reference>
+    <Reference Include="fslex">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\fslex.exe</HintPath>
+    </Reference>
+    <Reference Include="fsyacc">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\FSharpPowerPack-4.0.0.0\bin\fsyacc.exe</HintPath>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="FSharp.Core, Version=4.3.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <Private>True</Private>
