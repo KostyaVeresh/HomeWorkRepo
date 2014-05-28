@@ -1,7 +1,7 @@
 ﻿open System
 
 type RoundBuilder(num : int) =
-    member this.Bind (x : float, func : float -> float) = Math.Round(func x, num)
+    member this.Bind (x : float, func : float -> float) = Math.Round(func (Math.Round(x, num)), num)
     member this.Return (x : float) = Math.Round(x, num)
 
 let result = RoundBuilder 3 {
