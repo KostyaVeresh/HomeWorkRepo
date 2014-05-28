@@ -5,11 +5,11 @@
 
 type Computer(os, virused) =
     let mutable virused = virused
+    let rand = new System.Random()
     let syst = os
     member this.IsVirused = virused
     member this.OperSyst = syst
     member this.Infect() =
-        let rand = new System.Random()
         let value = rand.Next(0, 100)
         match syst with
         | Windows -> 
@@ -24,31 +24,31 @@ type Network(adjacencyMatrix : int[][], computerOS : OperSystem[], virusedComput
     let computersOfNet = [|for i in 1 .. computerOS.Length -> new Computer(computerOS.[i], virusedComputers.[i])|]
     let TryToInfect =
         let canBeVirused = [|for i in 1 .. computersOfNet.Length -> false|]
-        let rec func1 acc1 =
+        let rec findVirused acc1 =
             match acc1 with
             | x when x = computersOfNet.Length + 1 -> ignore()
             | _ -> 
                 if computersOfNet.[acc1].IsVirused then 
-                    let rec func2 acc2 =
+                    let rec setIfCanBeVirused acc2 =
                         match acc2 with
                         | x when x = computersOfNet.Length + 1 -> ignore()
                         | _ -> 
                             if adjacencyMatrix.[acc1].[acc2] = 1 then canBeVirused.[acc2] <- true
-                            func2 (acc2 + 1)
-                    func2 1
-                func1 (acc1 + 1)
-        func1 1
+                            setIfCanBeVirused (acc2 + 1)
+                    setIfCanBeVirused 1
+                findVirused (acc1 + 1)
+        findVirused 1
         canBeVirused
 
     member this.ComputersOfNet = computersOfNet
     member this.NextState() =
-        let rec func acc =
+        let rec state acc =
             match acc with
             | x when x = computersOfNet.Length + 1 -> ignore()
             | _ -> 
                 if TryToInfect.[acc] then computersOfNet.[acc].Infect()
-                func (acc + 1)
-        func 1
+                state (acc + 1)
+        state 1
 
 
 [<EntryPoint>]
